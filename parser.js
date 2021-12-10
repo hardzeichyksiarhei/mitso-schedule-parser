@@ -172,6 +172,19 @@ class ScheduleParser {
     );
   }
 
+  getScheduleByTeacherName(teacherName = '') {
+    if (!teacherName) return this.#schedules;
+    return this.getScheduleByTeacherNames([teacherName]);
+  }
+
+  getScheduleByTeacherNames(teacherNames = []) {
+    if (!teacherNames.length) return this.#schedules;
+    return this.#schedules.filter((schedule) => {
+      if (teacherNames.includes(schedule.teacherName)) return true;
+      return false;
+    })
+  }
+
   parseAll(files) {
     return new Promise((resolve, reject) => {
       const promises = files.map((file) => this.#parse(file));

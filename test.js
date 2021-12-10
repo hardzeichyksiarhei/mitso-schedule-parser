@@ -22,12 +22,16 @@ walker.on("file", async (_, fileStats, next) => {
 
 walker.on("end", async () => {
   const tempFolder = path.resolve(__dirname, "schedules");
-  const parser = ScheduleParser.getInstance({
-    teacherName: "Беднов",
-    tempFolder,
-  })
-  const payload = await parser.parseAll(files);
-  fs.writeFile(path.resolve(__dirname, 'result.json'), JSON.stringify(payload), () => {
-    console.log('Done!');
-  })
+
+  const parser = ScheduleParser.getInstance({ tempFolder });
+  await parser.parseAll(files);
+  const schedules = parser.getScheduleByTeacherName("Беднов");
+
+  fs.writeFile(
+    path.resolve(__dirname, "result.json"),
+    JSON.stringify(schedules),
+    () => {
+      console.log("Done!");
+    }
+  );
 });
