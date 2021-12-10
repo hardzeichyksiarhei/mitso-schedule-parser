@@ -4,7 +4,7 @@ const walk = require("walk");
 const ScheduleParser = require("../parser");
 
 const files = [];
-const walker = walk.walk("./schedules", {});
+const walker = walk.walk(path.resolve(__dirname, "schedules"), {});
 
 walker.on("file", async (_, fileStats, next) => {
   const filename = fileStats.name
@@ -12,7 +12,7 @@ walker.on("file", async (_, fileStats, next) => {
     .replace(/\s+/g, "_")
     .replace(/[\(\)]/g, "");
 
-  const outputFile = `./schedules/${filename}.json`;
+  const outputFile = path.resolve(__dirname, "schedules", `${filename}.json`);
   if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
 
   files.push(fileStats.name);
