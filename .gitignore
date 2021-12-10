@@ -1,4 +1,4 @@
 node_modules
-schedules
+tests/schedules
 
-result.json
+tests/result.json

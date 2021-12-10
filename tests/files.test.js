@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const walk = require("walk");
-const ScheduleParser = require("./parser");
+const ScheduleParser = require("../parser");
 
 const files = [];
 const walker = walk.walk("./schedules", {});
