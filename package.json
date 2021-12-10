@@ -1,0 +1,20 @@
+{
+  "name": "mitso-schedule-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "node-stream-zip": "^1.15.0",
+    "walk": "^2.3.15",
+    "xml2json": "^0.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
